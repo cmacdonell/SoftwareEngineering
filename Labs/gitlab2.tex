@@ -1,0 +1,218 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{url}
+\usepackage[letterpaper,top=1in,bottom=1in,right=1in,left=1.2in]{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{newcent}
+\usepackage{color}
+\usepackage{keystroke}
+\usepackage{ifthen}
+\usepackage{graphicx}
+
+\newcommand{\marginpoints}[1]{\marginpar{\vspace{0.3cm}\hspace{1.5cm}\Huge\sfrac{}{#1}}}
+\newcommand{\important}[0]{\marginpar{\hspace{2mm}\footnotesize \textcolor{red}{IMPORTANT}}}
+
+\newcommand{\course}{CMPT 395}
+\newcommand{\activity}{Lab \#4}
+\newcommand{\assigned}{today}
+\newcommand{\due}{today}
+\newcommand{\duetime}{11:00am}
+\newcommand{\weight}{2\% of final grade}
+
+\newcommand{\horizrule}{\noindent\rule{\linewidth}{0.15mm}}
+
+\lhead{\includegraphics[height=0.8cm]{../Images/macewan.jpeg}}
+\chead{\course{}: \activity{}}
+\rhead{Due \due{} at \duetime{}}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+\rfoot{\weight}
+
+%\newenvironment{answer}{\begin{comment}}{\end{comment}}
+
+\newenvironment{answer}
+{
+  \color{red}
+}
+{
+  \vspace{3mm}
+}
+
+\title{\course{}: \activity{}}
+\date{}
+
+\begin{document}
+
+\reversemarginpar
+
+\begin{center}
+  \Large{\activity{}: Branching and Merging with {\tt git}}
+\end{center}
+
+\begin{center}
+  \large{Objectives}
+\end{center}
+
+Last week we learned how to work with git for downloading code and monitoring our changes.  Version control, particularly with a tool like github is useful for sharing code too.  In this lab you'll
+see how to checkout and work with other people's commits.
+\vspace{3mm}\\
+\horizrule
+
+\begin{center}
+  \large{Instructions}
+\end{center}
+
+During the lab period, you must complete the tasks described below and upload your changes.
+To complete the task, you may work together with other students in the class and ask for help from your instructor.  {\bf This lab is worth 2\% of your grade}.
+Labs not submitted by \duetime~will be subject to loss of 2\%, excessive ridicule
+and eye-rolling by your instructor.   There are three questions to answer,
+email your answers to your instructor.
+\vspace{3mm}\\
+\horizrule
+
+\subsection*{Introduction}
+
+Recall your {\tt 395lab} repository from last lab.  You forked it,made a change to it by adding your name, committed your changes, pushed your commit to github and then issued a pull request.  You now should understand each of these steps well.
+
+I demonstrated how to merge a pull request using github.  In this lab, you
+can see how to merge someone else's changes via the command-line, yet still
+using github as the repository of the changes.  This combination is
+important because we want to work with code on our local machine to develop and test it and yet we want to 
+use github to share our work and access the work of others.  Yes, you can have the best of both worlds.
+
+Working with others is one of the fundamental benefits of version control (Yes, it's really great that it can help you figure why your code doesn't compile any more or when accidentally delete something, but you know that already).  It's important to distingush two groups of people when using the different features of git.  The two groups are: people you work with {\bf frequently} and those you work with {\bf infrequently}.  
+
+\subsection*{Infrequent Collaborators}
+
+Some random person may issue a pull request because he fixed some obscure bug in the small but useful software project you are famous for.   But he's not a regular committer.  Or you get a pull request from a co-worker that's not part of your code group.  Now, with github you can read his commit online, but...will it work?  Well you want to test it and do that you need it on your local machine.
+
+Go on github and look at the pull requests for {\tt 395lab}.  Pick a classmate's pull request, you're gonna test it!  Looking for the instructions under the link ``Use the command line'' which is below the commit itself.
+
+But, you don't want this person's code messing up your pristine master branch nor your almost-working-but-not-quite-not-sure-why development branch.
+
+\vspace{\baselineskip}
+{\bf Lesson: In git, branches are fast, cheap and easy to make, so let's create one.}
+\vspace{\baselineskip}
+
+I'll use Kari's branch as an example, you should use someone else's
+
+\begin{enumerate}
+\item Ensure you are on your master branch \verb+$ git branch +
+\item Create {\it and switch to} a branch for this random Joe \verb+$ git checkout -b karibronson-fix + (give it a meaningful name reflecting the user it's from, you don't want to end up with a bunch of branches named ``test'')
+\item Since Kari issued her pull request from her master branch,
+pull (a combination of fetch and merge) Kari's master branch into the branch you created for \\ them \verb+$ git pull https://github.com/karibronson/395lab.git master +
+\item You'll get a conflict because you both tried to change the same line in students.txt
+\end{enumerate}
+
+Stop here and try to find some information about resolving conflicts.  Ask Cam.  Once you've resolved the conflicts you can continue.
+
+We modified a simple text file, but if we had merged some code from Kari, understand that you could now compile, run and test that random person/Kari's changes do what they are supposed to.  
+
+Ok, we like the changes, so now you want to make those changes part of your
+repo and share it with the world.  The commit that contains the fix is still
+from random Joe/Kari, so they get the proper credit.
+
+\begin{enumerate}
+\item Switch back to master (how do I do that again?)
+\item Merge the changes \verb+$ git merge karibronson-fix +
+\item And push your changes up to your github fork of {\tt 395lab}
+\item Run \verb+$ git branch -a+ and note that only the karibronson-fix branch has been added to your repo.
+\item You can delete that branch with \verb+ $ git branch -D karibronson-fix + (up to you)
+\item Explore the \verb+$ git blame + tool to see who changed which line
+\end{enumerate}
+
+\noindent
+{\bf Task: Cam will check your git hub repos to ensure that you have merged, resolved any conflicts and pushed a classmate's changes.  Use a classmate other than Kari.}
+
+\subsection*{Frequent Collaborators}
+
+Ok, so what about people you are always working with?  Your open-source software bestie (OSSBFF for short)? Or code that you reference regularly.
+
+For these regular collaborators you can grab a copy of their whole repository,
+not just a branch.  Note that above I only grabbed a snapshot of one branch
+(master) of Kari's repository. 
+
+Let's imagine that Charles Sedgwick writes excellent code (I'm sure he does), so I frequently reference
+his.  To do this more easily, I have added his repository (not just a branch)
+to my local repo.
+
+\begin{enumerate}
+\item Add a remote repo: \verb+$ git remote add big-c https://github.com/sedgwickc/395lab+ (the name I give it ``big-c'' is arbitrary)
+\item Fetch it: \verb+$ git fetch big-c +
+\item Run \verb+$ git branch -a+ and note that I can see all the branches of the other user (look at the remote repos, they begin with \verb+ remotes/+)
+\item These are copies of remote branches.  They're on my machine, I can view their log (\verb+ git log big-c/master +) but I can't work with them (compile, test, etc.) without creating a {\it local branch}.
+\item But, that's easy \verb+ git checkout -b charlesmaster big-c/master+
+\end{enumerate}
+
+I now have a local branch named {\tt charlesmaster} that {\it tracks} Charles'
+work from github.  I can update with any future commits Charles makes by
+running \verb+$ git pull + when on the {\tt charlesmaster} branch.
+So I can view Charles' branches and test them if I want.  
+I can also merge anything I want from Charles' work which is a bit easier than having to run a pull with the full repo path as we did with our infrequent random Joe.
+
+{\bf Note: there is no reason to ever commit to branches of someone else's
+remote repo
+unless I am the maintainer of that repo.  Your branches (of your origin repo) are where you do your
+work.}
+
+\subsection*{Questions}
+
+Answer the following questions via email like last week:
+
+{\bf Question 1: What is the difference between a branch and a repository?}
+
+
+{\bf Question 2: Why would you create a local copy of a collaborator's branch?}.
+
+{\bf Question 3: Pulling your classmates branch create a conflict.  How could you have avoid the conflict on the merge?}.
+
+\section*{Your Frequenet Collaborators}
+
+Your project team will be frequent collaborators. But rather than accessing eachother's repos directly, you will work with github and your common repo that was created for your group.
+
+\begin{enumerate}
+\item I have created repos for you under the macewanCMPT395 organization on github.
+These are private repos (not publically viewable, only to your group and me).
+\item Fork your groups repo 
+\item Clone your forked version to your work machine or VM
+\end{enumerate}
+
+Since your group will be merging changes on github, it will be darn handy to
+be able to access them.  You will do this frequently.  So, add your group's
+main repository as a remote repo.
+
+You should add your groups main repo as a remote repo.  Name it {\bf upstream}
+by doing the following \verb+ git remote add upstream https://github.com/macewanCMPT395/<group repo> name+
+
+You should never commit on your local copy of upstream (see above about commiting to remote repos other than origin).  Commit to your origin repo and share your changes/commits that way.  If you're unclear on this, ask Cam.
+
+Understand that you will not commit direcly to your groups main repo on your local
+machine.  You will merge your changes on github by doing the following:
+
+\begin{enumerate}
+\item Implement cool features
+\item Commit to your local repo forked copy
+\item Push your changes to github 
+\item Issue pull requests that your group will check before merging
+\end{enumerate}
+
+
+\section*{Work on your project}
+
+Please fork your group repo and begin to work on it.  You should begin to make
+commits to this repo.
+
+If you are working on Ushahidi, the version is 2.7.2 and there is Zombie data
+set available on blackboard to upload into your installation to create many reports.
+
+If you are working on IPython, the version is 2.0.0-dev.
+
+\subsection*{References}
+
+\begin{description} 
+\item[{[1]}] J.~Loeliger. {\em Version Control with Git}. O'Reilly, Sebastopol, CA, May 2009.
+\item[{[2]}] Branching and Merging {\tt http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging}
+\end{description}
+
+\end{document}

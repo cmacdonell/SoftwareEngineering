@@ -1,0 +1,211 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{url}
+\usepackage[letterpaper,top=1in,bottom=1in,right=1in,left=1.2in]{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{newcent}
+\usepackage{color}
+\usepackage{keystroke}
+\usepackage{ifthen}
+\usepackage{graphicx}
+\usepackage{marvosym}
+
+\newcommand{\marginpoints}[1]{\marginpar{\vspace{0.3cm}\hspace{1.5cm}\Huge\sfrac{}{#1}}}
+\newcommand{\important}[0]{\marginpar{\hspace{2mm}\footnotesize \textcolor{red}{IMPORTANT}}}
+
+\newcommand{\course}{CMPT 395}
+\newcommand{\activity}{Project: Part A}
+\newcommand{\assigned}{today}
+\newcommand{\due}{}
+\newcommand{\duetime}{}
+\newcommand{\weight}{25\% of project}
+
+\newcommand{\horizrule}{\noindent\rule{\linewidth}{0.15mm}}
+
+\lhead{\includegraphics[height=0.8cm]{../../Images/macewan.jpeg}}
+\chead{\course{} \activity{}}
+\rhead{Weight: \weight{}}
+%\rhead{Due \due{} at \duetime{}}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+%\newenvironment{answer}{\begin{comment}}{\end{comment}}
+
+\newenvironment{answer}
+{
+  \color{red}
+}
+{
+  \vspace{3mm}
+}
+
+\title{\course{}: \activity{}}
+\date{}
+
+\begin{document}
+
+\reversemarginpar
+
+\begin{center}
+  \Large{\activity{}}
+\end{center}
+
+\begin{center}
+  \large{Objectives}
+\end{center}
+
+As you know the goal of the project is to work with and potentially contribute
+to an free and open-source software (FOSS) project.  The goal of the first
+part, Part A, is really get
+into that project, in short, to get ``Productively Lost''.
+
+\horizrule
+
+\begin{center}
+  \large{Instructions}
+\end{center}
+
+%%
+%%
+%%You will access {\tt git} using its command-line interface.
+%%In this section, you will learn how to access its help system.
+%%
+%%\begin{enumerate}
+%%\item Within a Terminal window, view {\tt git}'s most commonly used commands:\\
+%%  \verb+$ git+
+%%\item Look at the {\tt usage} line.
+%%  Notice the small list of arguments that apply to {\tt git}.
+%%  Also notice that {\tt [<args>]} follows {\tt <command>}; this means that commands will take arguments not listed here.
+%%\item Read the description for each of the following commands: {\tt add}, {\tt checkout}, {\tt commit}, {\tt diff}, {\tt grep}, {\tt init}, {\tt log}, {\tt rm}, and {\tt status}.
+%%  You will use these commands during this lab.
+%%\item Confirm that commands do in fact take unlisted arguments.
+%%  View the help for the {\tt init} command:\\
+%%  \verb+$ git help init+\\
+%%  As an alternative, try using the {\tt man} command:\\
+%%  \verb+$ man git-init+\\
+%%\end{enumerate}
+%%
+
+\section*{Productively Lost}
+
+Being productively lost means to be trying things, breaking things and working
+to develop and understanding.  You can read documentation for days about many
+projects, but learn more in the first hour of actually working with the code.
+
+In addition, many of you may never have built and run other people's code from
+scratch, at least not code of significant size.  Applications don't pop out of
+the ground ready to run, there is a process to making application deployable 
+and you will learn about this process.
+
+Part A will involve three main tasks:
+
+\begin{enumerate}
+\item Exploration 
+\item Personal Documentation
+\item Presentation and Summary
+\end{enumerate}
+
+\section*{Exploring}
+
+The first phase will be exploring.  
+
+\subsection*{The Community}
+
+{\bf Find out all you can about your FOSS project and it's community}.  
+
+\begin{itemize}
+  \item Do they have a website?
+  \item Where is their documentation?  
+  \item How is their source code available?  
+  \item Are there errors in the installation documents?
+  \item How does the community communicate?
+\end{itemize}
+
+The community and the code are both crucial.  One of your team must join the
+community via the community's selected communication tool.
+
+\subsection*{The Code}
+
+Basically, try to figure out how the code
+does what it does.  Don't aim too high.  Since you're building a web-app, try
+and change a behaviour on the main page.  Change a colour, modify the text
+displayed.  Making little changes is how you can get your feet wet with
+a project.  
+
+Set a time with your group (lab time included, but you should meet at other
+times too).  Work together, one computer, and try and understand the code.
+
+{\bf At times you will feel lost and totally confused.}  The software you are
+working with is 
+complicated, you will not understand it all after an hour of playing with it.
+If you get stuck trying to figure how something works, either ask a question of
+your instructor or move on to some other feature.  I hope this experience will
+serve well when faced with large codebases at your first job/internship.
+
+Keep track of how much time you spent working together.
+
+{\bf One aspect you must explore is the use of ``Plugins''.}  Both Ushahidi and
+IPython support plugins as an easier way to make changes.  See if you can find
+an existing plugin to install and try to understand how it works.  Ask questions, read documentation, etc.!
+
+\section*{Personal Documentation}
+
+While exploring, document what you learn.  Write down facts you figure out
+about the community and the code.
+Did you figure out how to pieces of code interact?  Great, draw a picture.
+{\bf Remember, pictures are worth $2^{10}$ words.}
+
+Your personal documentation should be in some kind of electronic document.
+You may use a google doc or whatever, but it should be a document that anyone
+can access and add to at any time.  Your personal documentation will be shared
+with other groups working on the same project.
+
+Your documentation {\bf must} contain the following:
+
+\begin{itemize}
+  \item A screenshot of the community's communication tool in action
+  \item An architectural diagram of how the software works to the best of your
+    knowledge
+  \item Step-by-step instructions of how you reproduce one change you made to
+    the software.
+\end{itemize}
+
+\section*{Presentation}
+
+At the end of two weeks, you will give a 5-10 minute presentation on what
+you've learned about your project to the class.  You must be able to show some
+changes you've made to the code and what you've learned about the code base.
+
+% Should the student's present a bit of a project proposal, where they will be going?
+
+\section*{Marking}
+
+25\% of your project mark (10 term marks) is dependent on Part A.  The
+breakdown of marks for Part A is:
+
+\begin{description}
+\item[30\%] Presentation
+\item[30\%] Personal Documentation about the community
+\item[40\%] Code changes you've produced
+\end{description}
+
+\section{Submissions}
+
+Submissions will be due at dates specified. Your documentation is due on
+Monday Feb. 10.   Presentations will be done during the Lab Feb. 12th.
+
+%%
+%%\subsection*{Resources}
+%%
+%%\begin{footnotesize}
+%%\begin{description}
+%%\item[{[1]}] Ushahidi API document, {\tt http://wiki.ushahidi.com/doku.php?id=ushahidi\_api}
+%%\item[{[2]}] Ushahidi Coding Style, {\tt
+%%http://wiki.ushahidi.com/doku.php?id=coding\_standards}, broken link?  See
+%%{\bf[3]}
+%%\item[{[3]}] {\bf Google is {\it still} your friend}
+%%\end{description}
+%%\end{footnotesize}
+%%
+\end{document}

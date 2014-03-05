@@ -1,0 +1,282 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{url}
+\usepackage[letterpaper,top=1in,bottom=1in,right=1in,left=1.2in]{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{newcent}
+\usepackage{color}
+\usepackage{keystroke}
+\usepackage{ifthen}
+\usepackage{graphicx}
+
+\newcommand{\marginpoints}[1]{\marginpar{\vspace{0.3cm}\hspace{1.5cm}\Huge\sfrac{}{#1}}}
+\newcommand{\important}[0]{\marginpar{\hspace{2mm}\footnotesize \textcolor{red}{IMPORTANT}}}
+
+\newcommand{\course}{CMPT 395}
+\newcommand{\activity}{Course Project}
+\newcommand{\assigned}{today}
+\newcommand{\due}{}
+\newcommand{\duetime}{}
+\newcommand{\weight}{40\% of final grade}
+
+\newcommand{\horizrule}{\noindent\rule{\linewidth}{0.15mm}}
+
+\lhead{\includegraphics[height=0.8cm]{../../Images/macewan.jpeg}}
+\chead{\course{} \activity{}}
+\rhead{Weight: \weight{}}
+%\rhead{Due \due{} at \duetime{}}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+%\newenvironment{answer}{\begin{comment}}{\end{comment}}
+
+\newenvironment{answer}
+{
+  \color{red}
+}
+{
+  \vspace{3mm}
+}
+
+\title{\course{}: \activity{}}
+\date{}
+
+\begin{document}
+
+\reversemarginpar
+
+\begin{center}
+  \Large{\activity{}}
+\end{center}
+
+\begin{center}
+  \large{Objectives}
+\end{center}
+
+The goal of the project is to apply what you've learned (and will continue to
+learn) about software development to work
+on the planning and development of a real software project.
+You will work in groups of three.
+
+You may work on Ushahidi or IPython.  This course project may be different
+than others you have done in the past because it will depend not only on the
+final delivered product, but on the process you used to complete it, your
+documentation and communication.  In particular, your ability to communicate
+and the proper use of tools will impact your grade.
+
+There are certainly going to be clarifications to the description below that
+will be given in class or in the Blackboard discussion section.  The following
+will convey the essence of the project.
+\horizrule
+
+\begin{center}
+  \large{Instructions}
+\end{center}
+
+%%
+%%
+%%You will access {\tt git} using its command-line interface.
+%%In this section, you will learn how to access its help system.
+%%
+%%\begin{enumerate}
+%%\item Within a Terminal window, view {\tt git}'s most commonly used commands:\\
+%%  \verb+$ git+
+%%\item Look at the {\tt usage} line.
+%%  Notice the small list of arguments that apply to {\tt git}.
+%%  Also notice that {\tt [<args>]} follows {\tt <command>}; this means that commands will take arguments not listed here.
+%%\item Read the description for each of the following commands: {\tt add}, {\tt checkout}, {\tt commit}, {\tt diff}, {\tt grep}, {\tt init}, {\tt log}, {\tt rm}, and {\tt status}.
+%%  You will use these commands during this lab.
+%%\item Confirm that commands do in fact take unlisted arguments.
+%%  View the help for the {\tt init} command:\\
+%%  \verb+$ git help init+\\
+%%  As an alternative, try using the {\tt man} command:\\
+%%  \verb+$ man git-init+\\
+%%\end{enumerate}
+%%
+
+\section{Projects}
+
+Your project will be split into three phases:
+
+\begin{enumerate}
+\item Exploration 
+\item Development
+\item Summary and Presentation
+\end{enumerate}
+
+The first phase will be exploration.  During this phase (about 2
+weeks) you will learn what is possible with your software base.  You will then
+meet with a ``client'' and discuss your project.   You should have some form
+of a prototype (likely diagrams or mock-ups) of how the software will look and
+work.  You will use github for version control.  
+
+The second phase will involve designing and coding your implementation of your
+project.  
+
+After the development phase, you will present what you have done.  However,
+this summary should be written from the frame of mind that the project is
+continuing.  In this document you should describe what you have learned through
+development.  Are certain features or requirements harder
+than expected?  Were some requirements altogether infeasible?  Do you need to
+adjust your requirements?
+
+You will do two (2) presentations during the project.  The first will follow
+your two week exploration and then a final project
+presentation and demo of what you have working near the end of term.  The
+presentations must be well-organized and professional in their delivery.
+
+Different groups may select the same project.  In fact, it will be interesting
+to compare and contrast the different approaches two separate groups may bring
+to the same problem.
+
+
+\vspace{0.2cm}
+\begin{center}
+\fbox{%
+   \parbox{0.8\linewidth}{%
+    \begin{center}
+      {\bf ``Amount of Work'' Disclaimer}
+    \end{center}
+We will select projects from a list of suggestions that will be released to
+you, or
+you can suggest your own project.  Given that we are working together on a real
+software application, I must acknowledge that the scale or work is a bit unclear, since
+we are working on ``open'' problems.  If a project turns out to be too easy and
+is completed quickly, I will require you take on some additional tasks.
+Conversely, if a project is extremely difficult, I may scale it back to a
+portion of the original assignment.  This is where your feedback and reporting
+will be crucial.  I acknowledge that this is
+different than a typical course project, but I believe that achieves two
+things:
+
+\begin{enumerate}
+\item It makes the projects more interesting
+\item It more closely resembles actual real-world software development
+\end{enumerate}
+
+   }
+}
+\end{center}
+
+\section*{Weekly Meetings}
+
+You will meet weekly in person with your project client.  With your group, you
+agree on a meeting time outside of class and lab time in which you can meet
+with your client.  Your first meeting will occur the week of January 27th.
+
+Cam is the client for Ushahidi and Greg Wilson is the client for IPython.
+
+You are expected to make progress weekly (sometimes a little, sometimes
+a lot), give brief updates and ask questions.  There will be other venues to
+ask questions as well such as your project's communication forum.
+
+In general, the less progress you have made, the more questions you should have.
+
+\section*{Project Topics}
+
+As mentioned, in this course you will work with either Ushahidi or IPython,
+the following are basic descriptions.  But remember, the approach of this
+course is to challenge you to explore and put your own creativity into your
+project.  For this reason the following descriptions are not extremely
+detailed.
+
+\subsection*{IPython Turtles Integration}
+
+The default Python distribution comes with a Turtles interface for giving
+instructons for a turtle to draw lines.  The turtle can move straight as well
+as turn.  The turtle can also support different colours.
+
+I suggest that you search online for Python Turtle examples and play around with it.
+
+You have seen the IPython notebook demoed briefly in class.  You will install
+it and also familiarize yourself with it.
+
+The goal of this project is to add support for the Turtle interface to IPython.
+
+You will need to play around with IPython and Python Turtles to understand the two
+and how they would integrate.  Additional information from Greg Wilson will be provided during weekly meetings.
+
+\subsection*{Ushahidi Analytics}
+
+Ushahidi supports maps for displaying images, but can be somewhat limited in
+it's support for other forms of information display (graphs, stats, etc.).
+
+There are three projects available for Ushahidi:
+
+1)  Add graphs to the Ushahidi front end (web display).  You will have to
+research javascript graphing support and see what is possible.
+
+2)  Add a heatmap display to the mainpage.  This project will involve adapting
+an existing plugin to work with the main display.
+
+3)  If after the first two weeks of ``Exploration'' you come up with an
+interesting project of your own, you may present it as a potential project.
+
+\section*{Marking}
+
+40\% of your final mark is dependent on this project.  Within the project
+itself, the breakdown of the percentages is as follows:
+
+\begin{description}
+\item[25\%] 2-week Exploration
+\item[30\%] Functionality implemented (quality, completeness, features and documentation)
+\item[25\%] Final write-up and demo
+\item[20\%] Team members evaluation
+\end{description}
+
+\section {Grading Criteria}
+\begin{description}
+%\subsection{Weekly Progress}
+\item[Communication] With all software development, communication is key.  You
+will be graded based upon your progress as well as your communication of that progress.
+%\subsection{Functionality}
+\item[Functionality] This grade will reflect the functionality of the implementation you
+have developed over the course of the development phase.
+%\subsection{Demo}
+\item[Demo]
+As (we will see) it says in the text ``Scrum and XP...'' having something
+working is not the same as having it demo-able.  A demo must show some
+functionality that is part of the requirements or features of the system.
+Don't just slap up whatever you have that day.  Think ahead.
+%\subsection{Documentation and Code/Patch Quality}
+\item[Documentation and Code/Patch Quality]
+As with the first assignment, you will be graded on the code you wrote to
+implement your project.  You will submit the code for your project at the end
+of the development phase.  Code should well-documented and be contained in
+git commits on your project git account.
+\item[Progress]
+You must make regular progress in your project.  Your instructor will monitor
+git and meet with you regularly.
+\end{description}
+
+\section{Final Write-Up}
+
+At the end of the term, a professional final write-up is expected that
+describes what your project accomplished, as well as a continued development
+plan.  Details will follow as to what the write-up should contain.  However,
+you should not simply wait until the end of the term and write in retrospect.
+You should make regular notes about what you are working on and time spent on
+various tasks in your wiki or whatever.
+Updates or modification to requirements should also be suggested in your final
+write-up.
+
+\section{Submissions}
+
+Submissions will be due at dates specified.  You will meet with your client
+during the week of January 27th. 
+
+%%
+%%\subsection*{Resources}
+%%
+%%\begin{footnotesize}
+%%\begin{description}
+%%\item[{[1]}] Ushahidi API document, {\tt http://wiki.ushahidi.com/doku.php?id=ushahidi\_api}
+%%\item[{[2]}] Ushahidi Coding Style, {\tt
+%%http://wiki.ushahidi.com/doku.php?id=coding\_standards}, broken link?  See
+%%{\bf[3]}
+%%\item[{[3]}] {\bf Google is {\it still} your friend}
+%%\end{description}
+%%\end{footnotesize}
+%%
+\end{document}

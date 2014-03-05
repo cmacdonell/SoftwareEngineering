@@ -1,0 +1,169 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{url}
+\usepackage[letterpaper,top=1in,bottom=1in,right=1in,left=1.2in]{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{newcent}
+\usepackage{color}
+\usepackage{keystroke}
+\usepackage{ifthen}
+\usepackage{parskip}
+\usepackage{listings}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0in}
+
+\def\urltilde{\kern -.15em\lower .7ex\hbox{\~{}}\kern .04em}
+\newcommand{\marginpoints}[1]{\marginpar{\vspace{0.3cm}\hspace{1.5cm}\Huge\sfrac{}{#1}}}
+\newcommand{\important}[0]{\marginpar{\hspace{2mm}\footnotesize \textcolor{red}{IMPORTANT}}}
+
+\newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}}
+\newcommand{\course}{CMPT 395}
+\newcommand{\activity}{Lab \#2}
+\newcommand{\assigned}{today}
+\newcommand{\due}{today}
+\newcommand{\duetime}{2:00 PM}
+\newcommand{\weight}{1\% of final grade}
+
+\newcommand{\horizrule}{\noindent\rule{\linewidth}{0.15mm}}
+
+\lstset{%
+%  language=[LaTeX]TeX,     % latex breaks at underscores, by default it
+%  doesn't
+%  backgroundcolor=\color{gray!25},
+  literate={\_}{}{0\discretionary{\_}{}{\_}},
+  basicstyle=\footnotesize\ttfamily,
+%  basicstyle=\ttfamily,
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  breaklines=true,
+%  breakatwhitespace=false,
+  columns=fullflexible,
+  xleftmargin=17pt  % indent the left margin so the numbers are within the textwidth
+}
+
+
+\lhead{\includegraphics[height=1cm]{../Images/macewan.jpeg}}
+\chead{\course{}: \activity{}}
+%\rhead{Due \due{} at \duetime{}}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+%\newenvironment{answer}{\begin{comment}}{\end{comment}}
+
+\newenvironment{answer}
+{
+  \color{red}
+}
+{
+  \vspace{3mm}
+}
+
+\title{\course{}: \activity{}}
+\date{}
+
+\begin{document}
+
+\reversemarginpar
+
+\vspace{0.5cm}
+
+\begin{center}
+  \Large{\activity{}: Installfest}
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{center}
+  \large{Objectives}
+\end{center}
+
+In this lab you will setup your deployment of Ushahidi and IPython and get
+some partners if you don't have any already.  This is the first step along the road
+of working with open-source software and the general tasks you do here will help you
+install open-source software in the future.
+\vspace{3mm}\\
+\horizrule
+
+\begin{center}
+  \large{Prereqs}
+\end{center}
+
+You will need an account on github.com.  As per the instructions on the site,
+please upload an SSH public key to the account.
+
+\url{http://help.github.com/mac-set-up-git/}
+
+If you aren't experienced with git, the git lab (on blackboard) is a good place
+to start.
+
+Two important steps are to set up your git identity
+
+\begin{verbatim}
+$ git config --global user.name "John A. Student"
+$ git config --global user.email "student@mymail.macewan.ca"
+\end{verbatim}
+
+\begin{center}
+  \large{Instructions}
+\end{center}
+
+For this lab, the goal is to get your software up and running so that you can
+get going with your project.  You may work together with your project partners.
+If you do not yet have a group, please form one today.
+
+Install one of the following, or if you have time, both.
+
+Before starting, please read the project document, so you understand the goal
+of the project.
+
+\subsection*{Install Ushahidi}
+o").  Install it
+into your {\tt public\_html} directory.  The instructions for installing here
+are available on the web.  Use your google skills to find them or search on the project home page.
+
+Make note of any mistakes in the installation documents.  
+
+You will need to create a database using PHPmyadmin in your VM
+
+\url{http://192.168.56.50/phpmyadmin}
+
+NOTE: your database must begin with ``jharvard\_'' or else the database will not
+be created.
+
+The VM is configured with most of the system requirements, you can jump ahead
+to the ``Web Install''
+
+You can follow the ``Basic Install''.  or if you really 
+
+{\bf Very Important: You must to "Enable Clean URLs'' to NO on the 2nd page
+of the basic install.}
+
+Once the install completes, you can point your browser at
+
+{\tt http://192.168.56.50/\urltilde jharvard/Ushahidi\_Web/} and you should see
+your new Ushahidi installation.  If you encounter problems, ask questions. 
+
+\subsection*{IPython}
+
+If you are working on IPython then find IPython and install the 2.0.0-dev
+version of IPython.  IPython is dependent on some additional packages that
+will also need to be installed.
+
+IPython does not install easily on the version of the CS50 VM we installed
+last week.  I suggest that you either work on your laptop without a VM, or
+install a more up-to-date version of Linux or work on the lab computers.  
+
+Again, three things to do to help you move along
+
+\begin{itemize}
+\item Read the project description before starting
+\item Work with your project mates
+\item Make note of any mistakes or unclear parts of the IPython install documentation.
+\end{itemize}
+
+%\begin{description}
+%\item[{[1]}] J.~Loeliger. {\em Version Control with Git}. O'Reilly, Sebastopol, CA, May 2009.
+%\end{description}
+
+\end{document}

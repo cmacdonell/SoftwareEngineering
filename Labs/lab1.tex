@@ -1,0 +1,277 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{url}
+\usepackage[letterpaper,top=1in,bottom=1in,right=1in,left=1.2in]{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{newcent}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{keystroke}
+\usepackage{ifthen}
+\usepackage{graphicx}
+
+\newcommand{\task}[1]{\vspace{\baselineskip}\noindent{\bf #1}\vspace{\baselineskip}}
+\newcommand{\marginpoints}[1]{\marginpar{\vspace{0.3cm}\hspace{1.5cm}\Huge\sfrac{}{#1}}}
+\newcommand{\important}[0]{\marginpar{\hspace{2mm}\footnotesize \textcolor{red}{IMPORTANT}}}
+
+\newcommand{\course}{CMPT 395}
+\newcommand{\activity}{Lab \#1}
+\newcommand{\assigned}{today}
+\newcommand{\due}{}
+\newcommand{\duetime}{11:59 PM}
+%\newcommand{\weight}{10\% of final grade}
+
+\newcommand{\horizrule}{\noindent\rule{\linewidth}{0.15mm}}
+
+\lhead{\includegraphics[height=0.8cm]{../Images/macewan.jpeg}}
+\chead{\course{}: \activity{}}
+\rhead{Due \due{} at \duetime{}}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+%\newenvironment{answer}{\begin{comment}}{\end{comment}}
+\lstset{%
+%  language=C,     % latex breaks at underscores, by default it
+%  doesn't
+%  backgroundcolor=\color{gray!25},
+  literate={\_}{}{0\discretionary{\_}{}{\_}},
+  basicstyle=\ttfamily,
+%  basicstyle=\ttfamily,
+%  numbers=left,
+  numberstyle=\small\color{gray},
+  %numbersep=5pt,                  % how far the line-numbers are from the code
+  breaklines=true,
+%  breakatwhitespace=false,
+  columns=fullflexible,
+  xleftmargin=17pt  % indent the left margin so the numbers are within the textwidth
+}
+
+
+\newenvironment{answer}
+{
+  \color{red}
+}
+{
+  \vspace{3mm}
+}
+
+\title{\course{}: \activity{}}
+\date{}
+
+\begin{document}
+
+\reversemarginpar
+
+\begin{center}
+  \Large{\activity{}: Running code in a VM}
+\end{center}
+
+\begin{center}
+  \large{Objectives}
+
+\begin{enumerate}
+\item Install and configure a VM Appliance
+\item Play around with PHP
+\item Start forming project groups
+\end{enumerate}
+\end{center}
+
+%\vspace{3mm}\\
+%\horizrule
+
+\begin{center}
+  \large{Instructions}
+\end{center}
+
+%%
+%%
+%%You will access {\tt git} using its command-line interface.
+%%In this section, you will learn how to access its help system.
+%%
+%%\begin{enumerate}
+%%\item Within a Terminal window, view {\tt git}'s most commonly used commands:\\
+%%  \verb+$ git+
+%%\item Look at the {\tt usage} line.
+%%  Notice the small list of arguments that apply to {\tt git}.
+%%  Also notice that {\tt [<args>]} follows {\tt <command>}; this means that commands will take arguments not listed here.
+%%\item Read the description for each of the following commands: {\tt add}, {\tt checkout}, {\tt commit}, {\tt diff}, {\tt grep}, {\tt init}, {\tt log}, {\tt rm}, and {\tt status}.
+%%  You will use these commands during this lab.
+%%\item Confirm that commands do in fact take unlisted arguments.
+%%  View the help for the {\tt init} command:\\
+%%  \verb+$ git help init+\\
+%%  As an alternative, try using the {\tt man} command:\\
+%%  \verb+$ man git-init+\\
+%%\end{enumerate}
+%%
+
+\subsection*{Introduction}
+
+In this lab, you will be
+familiarizing yourelf with working within a
+virtual machine environment as well as some of the software involved in this course.  Virtual machines are a great way to provide
+consistency and to not muddle your primary OS with a lot of installation files.
+
+For all your work, you should be making regular backups.  This is also true of
+your virtual machine.  Whether you are working on a lab machine or laptop, you
+should regularly make a copy of your VM to separate disk or flash drive.
+
+%%\begin{center}
+%%\framebox[\linewidth]{
+%%\parbox[c]{0.9\linewidth}{
+%%\center{\bf Standard Comment About Design Decisions}
+%%\vspace{\baselineskip}
+%%
+%%Although many details about this assignment are given in this description,
+%%there are many other design decisions that are left for you to make. In those
+%%cases, you should make reasonable design decisions (e.g., that do not
+%%contradict what we have said and do not significantly change the purpose of the
+%%assignment), document them in your source code, and discuss them in your
+%%report. Of course, you may ask questions about this assignment (for example, on
+%%blackboard) and we may choose to provide more information or provide some
+%%clarification. However, the basic requirements of this assignment will not
+%%change.
+%%}
+%%}
+%%\end{center}
+
+\subsection*{Task 1: Install a Virtual Machine}
+
+Virtual Machines are invaluable tools for testing and deploying software.  For
+this course, we'll be using a VM from Harvard University's CS50 course
+(\lstinline{www.cs50.net}).  The CS50 VM works easily with the VirtualBox VM
+software which is free.  VirtualBox is installed on the lab machines or you can
+install it on your laptop or home computer.
+
+Get a copy of the VM from a flash drive from your instructor and {\bf import}
+it into your VM.  Look for ``Import Appliance'' under the ``File'' menu.  Make
+sure to use Version 3 of the CS50 VM!
+
+The CS50 VM is loaded with lots of software.  Take some time to look around in
+the VM.
+
+\subsection*{Task 2: Run some PHP}
+
+For your test code, I suggest you use jharvard's web directory.  To use a user web
+directory, it must be named \lstinline{public_html} within jharvard's user
+directory.  The permissions on the directory (and its parents) must be readable
+and executable to allow the web server to access them.
+
+Create a file under the public\_html directory named \lstinline{index.php} that contains the following:
+
+\begin{lstlisting}
+<?php
+phpinfo();
+?>
+\end{lstlisting}
+
+When you point your web browser at
+\lstinline{http://192.168.56.101/~jharvard/} you should see a lot of purple
+talking about PHP.  View the HTML page source.  How did so little PHP generate
+so much data?
+
+Now add the following code above the PHP code:
+
+\begin{lstlisting}
+<script type="text/javascript">
+function isprime(num) {
+
+    for (var i = 2; i < num/2; i++) {
+        if (num % i == 0) {return false;}
+    }
+    return true;
+
+}
+
+function start() {
+    document.write("<p align=center>Hello<br>");
+    hello = 10;
+    for (var i = 1; i < hello; i++) {
+       
+        if (isprime(i))
+            document.write(i + " is prime<br>");
+        else document.write(i + " is not prime<br>");
+    }
+    document.write("<p>");
+}    
+start();
+</script>
+\end{lstlisting}
+
+Now reload the page.  Where did the new content come from?  View the page source again.
+
+Having Python create web content is slightly more involved.  If you finish these other parts quickly, come see Cam.
+
+\subsection*{Task 3: Observe the Ushahidi API stream}
+
+There are 3000 deployments of Ushahidi in the U.S. alone.  One use it to map crime in Atlanta.  Check out \lstinline{http://crime.mapatl.com}.
+
+Ushahidi has an Application Programming Interface (API) that allows
+applications to modify and consume data about
+the incident that Ushahidi is monitoring.
+
+You can read about the API in the Ushahidi documentation (see Resources below).
+For example, if you connect to the following URL:
+
+\url{http://crime.mapatl.com/api?task=incidents&resp=xml}
+
+You will get XML output of incidents that look something like this:
+
+\begin{footnotesize}
+\begin{verbatim}
+<response>
+  <payload>
+    <domain>http://crime.mapatl.com/</domain>
+    <incidents>
+      <incident>
+      <id>141477</id>
+      <title>Larceny @ 650 W CONWAY DR NW</title>
+      <description>Larceny @ 650 W CONWAY DR NW</description>
+      <date>2012-12-15 23:00:00</date>
+    .
+    .
+    .
+  </payload>
+</response>
+\end{verbatim}
+\end{footnotesize}
+
+With the following url:
+
+\url{http://crime.mapatl.com/api?task=incidents&resp=json}
+
+You will get JSON output (which looks way messier) that contains the same information.
+
+You can access other GET methods from the API other than "incidents" (i.e. version,
+categories, countries, etc) in the same manner.
+
+Understand that Ushahidi can present information in a number of different ways.
+
+\subsection*{Task 4: Start thinking about the project you'd like to work on.}
+
+You will have a choice of working on Ushahidi or iPython this term.  Based on
+what you've seen, start talking with others and forming groups.  If you can't
+find a group, please come see me.
+
+%%
+%%\subsection*{Task 4: YARRR! [3 marks]}
+%%
+%%The Ushahidi API stream that you modified in Task 3 takes a parameter called
+%%{\tt resp}, it can be either {\tt resp=xml} or {\tt resp=json}.  It will
+%%actually spit out XML if you type in anything other {\tt json} after the equal
+%%sign in {\tt resp=}.  For this task, add a third response type named {\tt pirate},
+%%that will not print XML or JSON, but will simply print {\tt YARRRR!} in the
+%%browser (no HTML necessary).
+%%
+
+
+\subsection*{Resources}
+
+\begin{footnotesize}
+\begin{description}
+\item[{[1]}] {\bf Google is your friend}
+\item[{[2]}] {\bf https://manual.cs50.net/appliance/3/}
+\end{description}
+\end{footnotesize}
+
+\end{document}

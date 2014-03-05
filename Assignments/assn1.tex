@@ -1,0 +1,236 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{url}
+\usepackage[letterpaper,top=1in,bottom=1in,right=1in,left=1.2in]{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{newcent}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{keystroke}
+\usepackage{ifthen}
+\usepackage{graphicx}
+
+\newcommand{\task}[1]{\vspace{\baselineskip}\noindent{\bf #1}\vspace{\baselineskip}}
+\newcommand{\marginpoints}[1]{\marginpar{\vspace{0.3cm}\hspace{1.5cm}\Huge\sfrac{}{#1}}}
+\newcommand{\important}[0]{\marginpar{\hspace{2mm}\footnotesize \textcolor{red}{IMPORTANT}}}
+
+\newcommand{\course}{CMPT 395}
+\newcommand{\activity}{Assignment \#1}
+\newcommand{\assigned}{today}
+\newcommand{\due}{January 24th}
+\newcommand{\duetime}{11:59 PM}
+\newcommand{\weight}{5\% of final grade}
+
+\newcommand{\horizrule}{\noindent\rule{\linewidth}{0.15mm}}
+
+\lhead{\includegraphics[height=1cm]{../Images/macewan.jpeg}}
+\chead{\course{}: \activity{}}
+%\rhead{Due \due{} at \duetime{}}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+\lfoot{\weight}
+
+%\newenvironment{answer}{\begin{comment}}{\end{comment}}
+\lstset{%
+%  language=C,     % latex breaks at underscores, by default it
+%  doesn't
+%  backgroundcolor=\color{gray!25},
+  literate={\_}{}{0\discretionary{\_}{}{\_}},
+  basicstyle=\ttfamily,
+%  basicstyle=\ttfamily,
+%  numbers=left,
+  numberstyle=\small\color{gray},
+  %numbersep=5pt,                  % how far the line-numbers are from the code
+  breaklines=true,
+%  breakatwhitespace=false,
+  columns=fullflexible,
+  xleftmargin=17pt  % indent the left margin so the numbers are within the textwidth
+}
+
+
+\newenvironment{answer}
+{
+  \color{red}
+}
+{
+  \vspace{3mm}
+}
+
+\title{\course{}: \activity{}}
+\date{}
+
+\begin{document}
+
+\reversemarginpar
+
+\begin{center}
+  \Large{\activity{}: Hello, My Name Is\ldots}
+\end{center}
+
+\begin{center}
+  \large{Objectives}
+
+\begin{enumerate}
+\item Create online identity for your portfolio
+\item Create some content and share it
+\item Comment on others
+\end{enumerate}
+\end{center}
+
+%\vspace{3mm}\\
+%\horizrule
+
+\begin{center}
+  \large{Instructions}
+\end{center}
+
+%%
+%%
+%%You will access {\tt git} using its command-line interface.
+%%In this section, you will learn how to access its help system.
+%%
+%%\begin{enumerate}
+%%\item Within a Terminal window, view {\tt git}'s most commonly used commands:\\
+%%  \verb+$ git+
+%%\item Look at the {\tt usage} line.
+%%  Notice the small list of arguments that apply to {\tt git}.
+%%  Also notice that {\tt [<args>]} follows {\tt <command>}; this means that commands will take arguments not listed here.
+%%\item Read the description for each of the following commands: {\tt add}, {\tt checkout}, {\tt commit}, {\tt diff}, {\tt grep}, {\tt init}, {\tt log}, {\tt rm}, and {\tt status}.
+%%  You will use these commands during this lab.
+%%\item Confirm that commands do in fact take unlisted arguments.
+%%  View the help for the {\tt init} command:\\
+%%  \verb+$ git help init+\\
+%%  As an alternative, try using the {\tt man} command:\\
+%%  \verb+$ man git-init+\\
+%%\end{enumerate}
+%%
+
+\subsection*{Introduction}
+
+In this assignment, you will create part of a personal identity online which is important as a developer.  You need to create a portfolio and in this assignment you will get on your way.
+
+\subsection*{Task 0: Your identity}
+
+Choose an online identity for yourself.  This should be a string that probably
+has something to do with your name.  This identity will your business card and
+identity when you apply for jobs so choose carefully.  Do not pick something
+silly as once you have entrenched your ID, it will be hard to change.  This
+task is equivalent to picking a company name if you were starting one.  This
+will be your brand that you (may) carry forward with you.
+
+Keys concepts:
+\begin{itemize}
+\item It should be based on your name
+\item Ensure someone does not already use it
+\item You will want to use it with various social media and domain registrars
+\end{itemize}
+
+Steps:
+\begin{enumerate}
+\item Pick a name
+\item Check if it's available
+\begin{enumerate}
+\item as a website domain (with .com, .ca, .net, etc)
+\item on github
+\item on twitter
+\item on tumblr, wordpress or blogspot
+\end{enumerate}
+\item If it's not available on at least two of the above, go back to step 1.
+\item Sign up the name on as many places as you can
+\item Embrace your brand
+\end{enumerate}
+
+\task{Your github account will be necessary for your project so please
+determine your github account by January 27th (one week from now).}
+
+You don't have to get your brand on every service, for example your twitter ID
+may not have to exactly match your github name, but it'd be really great if they did.
+If you can find, say, a twitter ID that exactly matches, then find something close.
+At least two services must match exactly.
+
+Here's an example: \url{www.branliu.com}
+
+\task{Give a summary of the brand you picked and how many places it is available.  Describe where is was not available and what you might do if you need your persona on that service/social-network/etc}.
+
+If you pick a bad brand, you will lose marks.
+
+\subsection*{Task 2: Find a developer's brand}
+
+Find an online open-source developer you think is cool and track down their id and how
+many places they have it actively used from the list above (and other places if possible).  In particular,
+find some software they have written.  It could
+be something they've done entirely themself or a larger project they contribute to.
+Describe the software and how it is available.  Also, find as many social media services where they talk about their work (a website, blog, twitter, whatever).
+
+\subsection*{Task 3: Put yourself out there}
+
+In this part, you will create the beginnings of your online portfolio.  Note
+that anything on here can be deleted later if you want.
+
+For this task you must do three things:
+
+\begin{enumerate}
+\item Upload code to github from a course project
+\item Create a blog, website or github.io page (called ``github pages'')
+\item Fork a repo from a software project into your github page
+\end{enumerate}
+
+Not sure what to write about.  Look at the things your hero from Task 2 writes
+about and look for others.  It could be a summary about some topic you're
+interested in, something related to courses or what's going on at MacEwan.
+Your post must share your opinion in some way.  Be bold!
+
+\subsection*{Task 4: Comment on others' blog posts}
+
+For this task you must comment on the work produced by others.  You must write
+thoughtful comments on others' blogs.  Read what is written and
+reply with some perspective, ask and explain a question or add a different
+opinion.  Be polite.
+
+
+
+\subsection*{Assignment Deliverables}
+
+Submit a document containing the following:
+
+\begin{enumerate}
+\item The address of your blog/website/etc.
+\item A write-up of how you chose your ID and any difficulties to finding an
+  ID that was available
+\item Description of a FOSS developer's online persona and what is cool about
+  them.
+\item A description of the code you uploaded to github.
+\end{enumerate}
+
+Your document should be well-written, free of spelling and grammatical errors,
+divided into sections with headings.  It must contain yourname and student ID.
+
+\subsection*{Submission}
+
+Your final document must be send by Feb. 21 to your instructor.  Email your
+document to your instructor.  Send PDFs, not Word files or any
+other format.
+
+By Feb. 7, you must send a link for your blog/webpage and github site to your
+instructor.  These will be posted so that others can find and comment on others
+sites.
+
+\subsection*{Marking}
+
+Here is a breakdown of marks:
+
+\begin{itemize}
+\item Document style and clarity - 50\%
+\item Comments on others - 20\%
+\item Blog quality - 30\%
+\end{itemize}
+
+%\subsection*{Resources}
+
+%\begin{footnotesize}
+%\begin{description}
+%\end{description}
+%\end{footnotesize}
+
+\end{document}

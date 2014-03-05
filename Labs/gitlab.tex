@@ -1,0 +1,316 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{url}
+\usepackage[letterpaper,top=1in,bottom=1in,right=1in,left=1.2in]{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{newcent}
+\usepackage{color}
+\usepackage{keystroke}
+\usepackage{ifthen}
+\usepackage{graphicx}
+
+\newcommand{\marginpoints}[1]{\marginpar{\vspace{0.3cm}\hspace{1.5cm}\Huge\sfrac{}{#1}}}
+\newcommand{\important}[0]{\marginpar{\hspace{2mm}\footnotesize \textcolor{red}{IMPORTANT}}}
+
+\newcommand{\course}{CMPT 395}
+\newcommand{\activity}{Lab \#3}
+\newcommand{\assigned}{today}
+\newcommand{\due}{today}
+\newcommand{\duetime}{11:00am}
+\newcommand{\weight}{2\% of final grade}
+
+\newcommand{\horizrule}{\noindent\rule{\linewidth}{0.15mm}}
+
+\lhead{\includegraphics[height=0.8cm]{../Images/macewan.jpeg}}
+\chead{\course{}: \activity{}}
+\rhead{Due \due{} at \duetime{}}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+\rfoot{\weight}
+
+%\newenvironment{answer}{\begin{comment}}{\end{comment}}
+
+\newenvironment{answer}
+{
+  \color{red}
+}
+{
+  \vspace{3mm}
+}
+
+\title{\course{}: \activity{}}
+\date{}
+
+\begin{document}
+
+\reversemarginpar
+
+\begin{center}
+  \Large{\activity{}: Version Control with {\tt git}}
+\end{center}
+
+\begin{center}
+  \large{Objectives}
+\end{center}
+
+In this lab, you will learn about a version control system (VCS).
+These systems help programmers maintain a repository of content, access historical versions, and over time, log a project's development.
+One of the original such systems, the Source Code Control System (SCSS), started in the early 1970s~[1].
+In this lab, we will use a modern system named {\tt git}: Linus Torvalds began developing it on April~3, 2005.
+A couple of weeks later, on April~16, he created the first git repository with 6.7 million lines of code belonging to the Linux kernel.
+\vspace{3mm}\\
+\horizrule
+
+\begin{center}
+  \large{Instructions}
+\end{center}
+
+During the lab period, you must complete the tasks described below and present the result to your instructor.
+To complete the task, you may work together with other students in the class and ask for help from your instructor.  {\bf This lab is worth 2\% of your grade}.
+Labs not demonstrated by the due date/time will be subject to loss of 2\%, excessive ridicule
+and eye-rolling by your instructor.   There are two questions to answer, you
+may answer on paper or email your answers to your instructor.
+\vspace{3mm}\\
+\horizrule
+
+\subsection*{Introduction}
+
+You will access {\tt git} using its command-line interface.
+In this section, you will learn how to access its help system.
+
+\begin{enumerate}
+\item Within a Terminal window, view {\tt git}'s most commonly used commands:\\
+  \verb+$ git+
+\item Look at the {\tt usage} line.
+  Notice the small list of arguments that apply to {\tt git}.
+  Also notice that {\tt [<args>]} follows {\tt <command>}; this means that commands will take arguments not listed here.
+\item Read the description for each of the following commands: {\tt add}, {\tt checkout}, {\tt commit}, {\tt diff}, {\tt grep}, {\tt log}, {\tt rm}, and {\tt status}.
+  You will use these commands during this lab.
+\item Confirm that commands do in fact take other arguments.
+  View the help for the {\tt add} command:\\
+  \verb+$ git help add+\\
+  As an alternative, try using the {\tt man} command:\\
+  \verb+$ man git-add+\\
+\end{enumerate}
+
+\subsection*{Configuring {\tt git} and Forking a project }
+
+Suppose you want to use {\tt git} to control source code of your project.  (Of
+course, you have to use it, but I just wanted the lab to sound politely
+suggestive).  The first thing is to configure your identity.
+
+\begin{enumerate}
+\item Configure this repository with your name and e-mail address:
+  \begin{verbatim}
+$ git config --global user.name "John A. Student"
+$ git config --global user.email "student@mymail.macewan.ca"
+\end{verbatim}
+
+\item Configure {\tt git} for your favourite text editor.
+  For Emacs, {\tt export GIT\_EDITOR=emacs} and for vim, {\tt export GIT\_EDITOR=vim}.
+
+  If you are using {\tt git} on your own system, you could add this setting to one of your bash startup files.
+  Think about which file you would use.
+\item Configure {\tt git} to use colours for its display.
+  Edit the file \verb+.gitconfig in your home directory+ to include the following lines:
+  \begin{verbatim}
+[color]
+        branch = auto
+        diff = auto
+        status = auto
+        ui = true
+\end{verbatim}
+\end{enumerate}
+
+You will use this git repository for ALL your work in this course.
+
+\subsection*{Start your task for this lab}
+
+In this section, you will fork a repository and submit a ``Pull request''.  You must have configured git as above.  Any submissions from ``John Harvard'' will not be accepted
+
+\begin{enumerate}
+\item Login to github.com
+\item Go the following link in a browser \verb+https://github.com/cmacdonell/395lab+
+\item Fork this repository
+\item Clone your forked copy of this repository from {\it your} github account not from Cam's account (use the https or ssh protocol in your clone command).
+\end{enumerate}
+
+Add your name and github account to the students.txt file.
+
+\subsection*{Check your work into the repository}
+
+In this section, you will save your work into the repository.
+You can think of the repository as a database for files.
+
+\begin{enumerate}
+\item {\em Stage} files for inclusion in the repository ('add' is a confusing operation I know):
+  \begin{verbatim}
+git add students.txt
+\end{verbatim}
+
+  The idea of staging is an important concept.
+  Whenever you actually add or change files in the repository (commit changes), you need to supply a description of the change.
+  You wouldn't want to have to write such a description for every single file individually.
+  By staging files, you are in essence tagging them for inclusion in the next commit.
+\item View {\tt git}'s status:
+  \begin{verbatim}
+git status
+\end{verbatim}
+\item If {\tt git} clearly indicates that it is set to commit only the four identified files, {\em commit} your changes to the repository:
+  \begin{verbatim}
+git commit
+\end{verbatim}
+\item {\tt git} will display your text editor.
+  If you want to abort the commit, simply exit the editor without saving.
+  A description for a commit should be formatted as follows:
+  \begin{verbatim}
+Short one-line summary of the commit (less than 80 characters wide)
+
+After leaving a blank line, you can then begin writing an optional
+multi-line description of the commit.  You should also try to keep
+these lines shorter than 80 characters.
+\end{verbatim}
+  For our example, we will enter a simple commit message (and save and close the editor):
+  \begin{verbatim}
+Added <my name> to the student list
+\end{verbatim}
+\item View the status again; you should no longer see the files listed.
+\item View the log of the repository:
+  \begin{verbatim}
+git log
+\end{verbatim}
+\item Congratulations!
+  You have made your first commit to your new repository.
+\end{enumerate}
+
+\subsection*{Working with a remote repository}
+
+Git is handy even with only the above configuration.  It allows you to track
+your work, find bugs and generally stay organized.
+
+However, this is just the tip of the iceberg (how many times are we going to
+use that metaphor? Seriously).  Git is an excellent collaboration tool because
+all of the same properties apply when trying to figure out what other people
+are working on within a project.
+
+Now, please take the following oath:
+
+\vspace{0.5cm}
+{\large Whenever I am tempted to e-mail someone a tarball of code, I will stop
+and use version control, possibly git.}
+\vspace{0.5cm}
+
+\subsubsection*{Back in your 395lab directory}
+
+It is now time to push your changes to github.
+Run the following:
+
+\begin{verbatim}
+$ git push origin
+\end{verbatim}
+
+{\bf Question 1: What are two reasons one might push code to a service
+like github?}
+
+\noindent
+Answer:
+\vspace{2in}
+
+Now if you go to your github account you should be able to see your commit for your project.
+
+\vspace{\baselineskip}
+\noindent
+{\bf Task: Issue a ``Pull Request'' to the account. Pull requests are the way your changes will likely be merged into a project.~[3]}
+
+\section*{How git may save your life/sanity}
+
+As a git user, the following three-step procedure should become
+common and understandable for you:
+
+\begin{verbatim}
+$ git add <somefile>
+$ git commit
+$ git push origin
+\end{verbatim}
+
+What you are doing is:
+
+\begin{enumerate}
+\item Telling git to add the file to the repository.
+\item Confirming the addition and giving a super-helpful commit message that
+makes sense to other people, not just yourself.
+\item Moving that commit to the remote copy of your code.
+\end{enumerate}
+
+If you are just using git locally you don't need to to do a \verb+git push+.
+But for this course, you should push regularly.  {\bf You do not need to push
+with every commit.  You should make commits very regularly and push when you
+want to share your code}
+
+You can also add multiple files at once.
+
+\subsection*{Restoring a file}
+
+\begin{enumerate}
+\item Delete the students.txt in {\tt 395lab} that you just commited to.
+\item View the status of the working directory.
+\item Retrieve the file from the repository:
+\begin{verbatim}
+git checkout students.txt
+\end{verbatim}
+\item View the status again; confirm that the file now exists.
+\item Say ``whooooooa''.
+\end{enumerate}
+
+Take a second and try to catch your breath realizing all the moments in your
+previous coding where this ``restore'' feature would've been handy and saved
+you hours of re-doing work.  There will be many moments like this where git's
+feature make you smile.
+
+\subsection*{Viewing a previous commit}
+
+\begin{enumerate}
+\item View the log and make note (copy) the commit identifier for our second commit.
+  (It's the big hexadecimal number.)
+\item View the changes made by that commit:\\
+{\tt git show} $<$paste big number here$>$
+\end{enumerate}
+
+\section*{Finish your task for this lab}
+
+To get the 2\% credit for this lab, you must demonstrate the following to your instructor.
+
+\begin{enumerate}
+\item your git ID is set on your work machine.
+\item your github is account is setup.
+\item used github to ``clone'' the ``forked'' 395Lab project from {\tt http://github.com/cmacdonell/395lab}.  Browse
+around github, there are a lot of cool projects there.
+\item Issue a pull request on github for your changes to Cam
+\item Answer questions 1 and 2.
+\end{enumerate}
+
+{\bf Question 2: What is another VCS tool?  Find an online service that offers similar features to github that uses that tool}.
+
+\noindent
+Answer:
+\vspace{2in}
+
+\section*{Other good stuff}
+
+\noindent
+If you have time, I also suggest that you learn and play around with branching.
+
+\begin{enumerate}
+\item Branching {\tt http://learn.github.com/p/branching.html}
+\end{enumerate}
+
+\subsection*{References}
+
+\begin{description} 
+\item[{[1]}] J.~Loeliger. {\em Version Control with Git}. O'Reilly, Sebastopol, CA, May 2009.
+\item[{[2]}] Forking on github {\tt https://help.github.com/articles/fork-a-repo}
+\item[{[3]}] Github Pull Requests {\tt https://help.github.com/articles/using-pull-requests}
+\end{description}
+
+\end{document}

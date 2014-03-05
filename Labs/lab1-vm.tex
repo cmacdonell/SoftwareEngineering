@@ -1,0 +1,218 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{url}
+\usepackage[letterpaper,top=1in,bottom=1in,right=1in,left=1.2in]{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{newcent}
+\usepackage{color}
+\usepackage{keystroke}
+\usepackage{ifthen}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.eps}
+
+\newcommand{\marginpoints}[1]{\marginpar{\vspace{0.3cm}\hspace{1.5cm}\Huge\sfrac{}{#1}}}
+\newcommand{\important}[0]{\marginpar{\hspace{2mm}\footnotesize \textcolor{red}{IMPORTANT}}}
+
+\newcommand{\course}{CMPT 395}
+\newcommand{\activity}{Lab \#1}
+\newcommand{\assigned}{today}
+\newcommand{\due}{today}
+\newcommand{\duetime}{2:00 PM}
+%\newcommand{\weight}{1\% of final grade}
+
+\newcommand{\horizrule}{\noindent\rule{\linewidth}{0.15mm}}
+
+\lhead{\includegraphics[height=0.5cm]{../Images/macewan.jpeg}}
+\chead{\course{}: \activity{}}
+%\rhead{Due \due{} at \duetime{}}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+%\newenvironment{answer}{\begin{comment}}{\end{comment}}
+
+\newenvironment{answer}
+{
+  \color{red}
+}
+{
+  \vspace{3mm}
+}
+
+\title{\course{}: \activity{}}
+\date{}
+
+\begin{document}
+
+\reversemarginpar
+
+\begin{center}
+  \Large{\activity{}: Virtual Box and the CS50 VM}
+\end{center}
+
+\begin{center}
+  \large{Objectives}
+\end{center}
+
+In this lab we will learn about our development environment for this course,
+namely a virtual machine (VM).  Our VM is taken from Harvard's Introductory
+course CS 50 (http://cs50.net) and uses the free VirtualBox software to run the
+VM.  VirtualBox is installed in the labs and you may install it on your labtop
+or home computer if you wish.
+\vspace{3mm}\\
+\horizrule
+
+\begin{center}
+  \large{Instructions}
+\end{center}
+
+During the lab period, you should complete the tasks described below and
+present the result to your instructor.  To complete the task, you may work
+together with other students in the class and ask for help from your
+instructor.  Labs are not graded in this course.
+\vspace{3mm}\\
+\horizrule
+
+\subsection*{Introduction}
+
+VMs are an excellent tool for using operating systems and applications that are
+either not able to be installed on your native OS, or have significant
+dependencies (other applications, libraries, etc.)  We will be using a VM for
+projects in this course since our development environment has many pieces of
+software that can be difficult to configure.  As well, it will allow you to
+work outside of the lab more easily if you wish.
+
+\begin{enumerate}
+\item Install VirtualBox
+\item Add a Host-only network
+  Under a configuration menu, there will be a section for the Network and it
+will allow you to add a host-only network.  Use the default name for this new
+network which should be {\tt vboxnet0}.
+\item Download the image from this site: \\
+  \verb+ https://manual.cs50.net/CS50_Appliance_2.3 +
+\item Follow the installation instructions on the above site to import the
+image into your installation of VirtualBox.  In particular,
+Sections 2.3.10 and 2.3.15 are very useful.
+\end{enumerate}
+
+
+Following the installation, you should be able to get the VM running and
+connect the web server at {\tt http://192.168.56.50}.
+
+The CS50 VM is based upon Fedora Linux (www.fedoraproject.org) and
+contains a lot of software that is useful for this course as well as
+software development in general.
+
+For this course, the VM contains: Apache, MySQL, PHP5
+
+Other interesting software includes: DropBox integration, Scratch, Eclipse, gcc.
+
+NOTE: the necessary software for this course (Apache, MySQL, PHP) runs on
+Windows as well, so if you want to install on Windows, that choice is available
+to you.  You will still be able to do the project assignments/sprints on
+Windows if you wish to.
+
+\subsection*{Updating and installing software with {\tt yum}}
+
+Yum is the name of the package manager in Fedora Linux.  Yum can be used to
+install and update software within the VM.
+
+\verb+ $ yum search <package name> +
+
+Installing software requires using `sudo' privileges
+
+\begin{verbatim}
+$ sudo yum install <package name>
+\end{verbatim}
+
+Let's try installing something.  In particular the package {\tt ctags} is
+useful for navigating source code.  You can confirm it's available by running:
+
+\begin{verbatim}
+$ yum search ctags-etags
+\end{verbatim}
+
+Let's install it using 'sudo' to give the proper permissions to install
+software.
+
+\begin{verbatim}
+$ sudo yum install ctags-etags
+\end{verbatim}
+
+\subsection*{Apache and PHP}
+
+Apache is the name of the webserver that is installed in the VM image.  If you
+point a web browser (either in the VM or on your laptop/desktop) at
+
+\url{http://192.168.56.50}
+
+you will see a page that is returned by Apache by default.
+
+In jharvard's home directory (/home/jharvard) create a person web page directory.  This directory {\bf
+must} be named {\tt public\_html}.  Running the following in the home directory
+will help.
+
+\verb+ $ mkdir public\_html +
+
+We must give the web browser permission to access our public\_html directory:
+
+\begin{verbatim}
+$ chmod 755 .
+$ chmod 755 public\_html
+\end{verbatim}
+
+Inside this directory, use your preferred editor to create a file named {\tt
+index.php} and put the following code in it.
+
+\begin{verbatim}
+<?php
+    phpinfo();
+?>
+\end{verbatim}
+
+We must also give permission for the file:
+
+\begin{verbatim}
+$ chmod 644 index.php
+\end{verbatim}
+
+Now if you point a browser at
+
+\url{http://192.168.56.50/~jharvard/index.php}
+
+You should see a long page about the PHP installation on your system.
+
+\subsection*{Playing with PHP}
+
+Now, let's play with PHP a little.
+
+PHP code is used to generate front-end browser code (i.e., Javascript, HTML,
+etc).   PHP code can be interlaced with regular HTML code.
+
+PHP files should be named have an extension of {\tt .php}.  The {\tt index.php}
+example is an example of a very simple PHP script.
+
+If you view the source of the page in your browser however, you will see that
+the source of the page is very different.  The code is different because PHP is
+a {\it server-side} script that generates a web front-end language, typically HTML.
+The browser never sees the PHP code, the web server (Apache) runs the PHP,
+generates the HTML and then sends the HTML to the web browser.
+
+\subsubsection*{First modifications}
+
+Change the line {\tt phpinfo();} in {\tt index.php} to {\tt echo 'hello';}
+
+Notice the output in the browser (after reloading) will read 'hello' (you can
+view the source too).
+
+Now remove the first and third lines leaving only {\tt echo 'hello';} in the
+file then reload the browser.
+
+The text now shows the original contents of the file because we removed the
+PHP directive {\tt <?php ... ?>} so the file is not interpreted as PHP by the
+web server (even with a {\tt .php} extension), it is just sent to the web
+browser as plain text.
+
+%\subsubsection*{Lab challenge: FizzBuzz}
+
+\end{document}

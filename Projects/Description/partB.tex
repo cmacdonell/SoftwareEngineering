@@ -1,0 +1,151 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{url}
+\usepackage[letterpaper,top=1in,bottom=1in,right=1in,left=1.2in]{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{newcent}
+\usepackage{color}
+\usepackage{keystroke}
+\usepackage{ifthen}
+\usepackage{graphicx}
+\usepackage{marvosym}
+
+\newcommand{\marginpoints}[1]{\marginpar{\vspace{0.3cm}\hspace{1.5cm}\Huge\sfrac{}{#1}}}
+\newcommand{\important}[0]{\marginpar{\hspace{2mm}\footnotesize \textcolor{red}{IMPORTANT}}}
+
+\newcommand{\course}{CMPT 395}
+\newcommand{\activity}{Project: Part B}
+\newcommand{\assigned}{today}
+\newcommand{\due}{}
+\newcommand{\duetime}{}
+\newcommand{\weight}{25\% of project}
+
+\newcommand{\horizrule}{\noindent\rule{\linewidth}{0.15mm}}
+
+\lhead{\includegraphics[height=0.8cm]{../../Images/macewan.jpeg}}
+\chead{\course{} \activity{}}
+\rhead{Weight: \weight{}}
+%\rhead{Due \due{} at \duetime{}}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+%\newenvironment{answer}{\begin{comment}}{\end{comment}}
+
+\newenvironment{answer}
+{
+  \color{red}
+}
+{
+  \vspace{3mm}
+}
+
+\title{\course{}: \activity{}}
+\date{}
+
+\begin{document}
+
+\reversemarginpar
+
+\begin{center}
+  \Large{\activity{}}
+\end{center}
+
+\begin{center}
+  \large{Objectives}
+\end{center}
+
+\begin{center}
+code. measure. blog.
+\end{center}
+
+\horizrule
+
+\begin{center}
+  \large{Instructions}
+\end{center}
+
+With Part A of the project you became familiar with your chosen software project and some advanced source
+control techniques with git. Now that you are pushing, issuing pull requests and making changes to your code
+it is now time to implement the particular feature chosen by your team.
+
+In this part of the project you will continue to meet with your ``client'' and implement your particular
+feature as part of your project.  As well, you will begin to take measurements of your productivity.  Meauringing your productivity should become a regular part of your life as a software developer.
+
+\section{Coding}
+
+The most important aspect of this next phase of your project is to make significant progress on implementing
+your feature. You will be graded on the regularity of your commits, the quality of your commits and your
+overall progress.
+
+You should have a clear specification (a ``spec'' of sorts) of what you are building towards.  It need not be extremely detailed, but it must be clear.  Check with Cam if you are unclear.
+
+\subsection{Keeping a code diary}
+
+Matt Church talked about the difference between being at work versus actually
+working.  Greg Wilson asked if you knew your productivity level?  To track your productivity level you will keep {\bf precise} track of the time you spent working on code and the number of lines of code you wrote.  You should be able to report lines of code per hour for individual sessions as well as overall.  Be precise and count the time you are actively working, not just sitting at the computer.  1 hour 25 minutes is better than ``an hour and a half'', and ``a few hours'' is unacceptable. 
+
+\begin{enumerate}
+	\item Was there a difference between sessions?
+	\item What was your most productive session?
+	\item What was your least productive session?
+	\item What was your overall productivity?
+	\item What do you think caused the difference?
+\end{enumerate}
+
+You should include at least one pair programming session with one or both of your partners.  Both members in the pair should report that session as part of their experience.  Ensure that you are actually pair programming (i.e. two/three people, one computer), not just working together.  Another tip is to work {\em distraction free}.  Turn off your phones, don't check email, work solidly for at least 1 hour.  Any breaks should be short and not involve distractions.  Go for a brief walk but do not check any media distractions.  Stay in hack mode.
+
+{\bf Email Cam each Friday with your coding session results.}
+
+\subsection{Blog about your experience in this phase}
+
+You will add a second and third post to your blog about your development experience with your project.
+Your first blog posts must contain some media (other than text) related to your work.  Perhaps screenshots or a video of solving some development problem related to your project.  Try to recall those ``gosh I wish someone would\'ve explained this moments'' from getting your project up and running or making your first changes.
+
+Your second blog post must be a summary of your productivity measurements and a reflection about it considering the questions above.  You must create a table as part of your blog post that lists your 
+coding sessions.  Proper formatting in this way will help make your blog readable.
+
+\section{Engaging your community}
+
+When stuck it is important to ask for help. Your entire group should join the primary communication
+medium for your project. You must establish yourself in the community and ask questions over the
+coming 3 weeks.  Make sure to make a record of the questions you ask.
+
+\section*{Marking}
+
+50\% of your project mark (20 term marks) is dependent on Part B.  The
+breakdown of marks for Part B is:
+
+\begin{description}
+\item[20\%] Blog posts (10\% each)
+\item[60\%] Development progress (Features, git, community engagement and code quality)
+\item[20\%] Presentation
+\end{description}
+
+\section{Submissions}
+
+This project part consists of the following submissions:
+
+\begin{enumerate}
+	\item Weekly emails to Cam about your coding statistics
+	\item Blog post \#1 must be up by Feb 28th
+	\item Blog post \#2 must be up by Mar 14th
+	\item Presentations on Wednesday, Mar 19
+\end{enumerate}
+
+
+
+%%
+%%\subsection*{Resources}
+%%
+%%\begin{footnotesize}
+%%\begin{description}
+%%\item[{[1]}] Ushahidi API document, {\tt http://wiki.ushahidi.com/doku.php?id=ushahidi\_api}
+%%\item[{[2]}] Ushahidi Coding Style, {\tt
+%%http://wiki.ushahidi.com/doku.php?id=coding\_standards}, broken link?  See
+%%{\bf[3]}
+%%\item[{[3]}] {\bf Google is {\it still} your friend}
+%%\end{description}
+%%\end{footnotesize}
+%%
+\end{document}
