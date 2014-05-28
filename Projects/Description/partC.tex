@@ -1,0 +1,136 @@
+\documentclass[letterpaper]{article}
+
+\usepackage{url}
+\usepackage[letterpaper,top=1in,bottom=1in,right=1in,left=1.2in]{geometry}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{newcent}
+\usepackage{color}
+\usepackage{keystroke}
+\usepackage{ifthen}
+\usepackage{graphicx}
+\usepackage{marvosym}
+
+\newcommand{\marginpoints}[1]{\marginpar{\vspace{0.3cm}\hspace{1.5cm}\Huge\sfrac{}{#1}}}
+\newcommand{\important}[0]{\marginpar{\hspace{2mm}\footnotesize \textcolor{red}{IMPORTANT}}}
+
+\newcommand{\course}{CMPT 395}
+\newcommand{\activity}{Project: Part C}
+\newcommand{\assigned}{today}
+\newcommand{\due}{}
+\newcommand{\duetime}{}
+\newcommand{\weight}{25\% of project}
+
+\newcommand{\horizrule}{\noindent\rule{\linewidth}{0.15mm}}
+
+\lhead{\includegraphics[height=0.8cm]{../../Images/macewan.jpeg}}
+\chead{\course{} \activity{}}
+\rhead{Weight: \weight{}}
+%\rhead{Due \due{} at \duetime{}}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+%\newenvironment{answer}{\begin{comment}}{\end{comment}}
+
+\newenvironment{answer}
+{
+  \color{red}
+}
+{
+  \vspace{3mm}
+}
+
+\title{\course{}: \activity{}}
+\date{}
+
+\begin{document}
+
+\reversemarginpar
+
+\begin{center}
+  \Large{\activity{}}
+\end{center}
+
+\begin{center}
+  \large{Objectives}
+\end{center}
+
+\begin{center}
+We're almost there!  Having made significant progress in Part B, now turn your focus to wrapping up what you are able to finish, present your work to your classmates and prepare a webpage to share your work with the world and anyone who would want to pick up your work.
+\end{center}
+
+\horizrule
+
+\begin{center}
+  \large{Instructions}
+\end{center}
+
+We're almost there!  There is 25\% of the project remaining for Part C.  For the final component of the project you have two tasks:
+
+\begin{itemize}
+\item Group Presentation
+\item Create a Project Github page
+\end{itemize}
+
+\section{Presentation}
+
+As mentioned in class the presentations will be April 9th and 11th.  Your presentation is expected to be between 5 and 10 minutes. Your presentation should be less technical and focussed more on features.  Forget that your audience knows anything about your project.
+
+Your presentation must be focussed around a live demo that can show what your project can do.  You must all so sell your project. Explain why it is useful? Why would someone use it?  As part of your demo you must go through a user story.  Walk through what a user would be trying to do/understand/use and how they would achieve it with your awesome project!
+
+For example, watch this Apple video \url{https://www.youtube.com/watch?v=oqIYkxSizRU}, see how the software is demoed in terms of how it's useful.  Any slides are extremely sparse with just a single fact.  Slides loaded with text are like jokes that need to be explained, it usely means they're not good.
+
+\section{Github Pages}
+
+Github has an easy way to create a homepage for your project.  It's easy and fast.  Head over to \url{https://pages.github.com/} and look for the link "Project Site" to create a homepage for a project.  This is about as difficult as creating a blog.
+
+Your site must have two pages on it:
+
+\subsection*{Getting Started}
+
+Which must contain:
+
+\begin{enumerate}
+\item    A brief intro of your project
+\item    What the project is useful for (again, sell, sell, sell)
+\item    A screenshot of it working
+\item    (Correct!) Installation instructions
+\end{enumerate}
+
+\subsection*{Developers}
+
+Which must contain:
+
+\begin{enumerate}
+\item    A link to your repo
+\item    Where the bulk of your code changes are contained
+\item    A brief description of how someone could pick up your work
+\item    What features would be added next
+\end{enumerate}
+
+Your github page should be shown as part of your presentation.
+
+\section*{Marking}
+
+25\% of your project mark (20 term marks) is dependent on Part B.  The
+breakdown of marks for Part B is:
+
+\begin{description}
+\item[50\%] Presentation
+\item[50\%] Github page quality and completeness
+\end{description}
+
+%%
+%%\subsection*{Resources}
+%%
+%%\begin{footnotesize}
+%%\begin{description}
+%%\item[{[1]}] Ushahidi API document, {\tt http://wiki.ushahidi.com/doku.php?id=ushahidi\_api}
+%%\item[{[2]}] Ushahidi Coding Style, {\tt
+%%http://wiki.ushahidi.com/doku.php?id=coding\_standards}, broken link?  See
+%%{\bf[3]}
+%%\item[{[3]}] {\bf Google is {\it still} your friend}
+%%\end{description}
+%%\end{footnotesize}
+%%
+\end{document}
